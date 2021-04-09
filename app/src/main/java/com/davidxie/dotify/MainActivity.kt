@@ -1,5 +1,6 @@
 package com.davidxie.dotify
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         playCount = Random.nextInt(100000, 1000000);
         binding.playCountText.text = playCount.toString() + " plays"
 
-        // Function that handels when change username button is clicked
+        // Function that handles when change username button is clicked
         binding.changeUserButton.setOnClickListener {
             // When the user is currently not editing the username
             if (!isEditing) {
@@ -87,6 +88,14 @@ class MainActivity : AppCompatActivity() {
 
                 isEditing = false;
             }
+        }
+
+        // Function that handles album art long click
+        // Code for handel long-click is adapted from https://stackoverflow.com/questions/49712663/how-to-properly-use-setonlongclicklistener-with-kotlin
+        binding.albumCoverImage.setOnLongClickListener {
+            // Generate a random color
+            binding.playCountText.setTextColor(Color.rgb(Random.nextInt(0, 256),Random.nextInt(0, 256),Random.nextInt(0, 256)))
+            return@setOnLongClickListener true
         }
 
         // Function steps that get called when previous button is pressed
