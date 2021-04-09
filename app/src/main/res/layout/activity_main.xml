@@ -34,7 +34,6 @@
             android:layout_height="wrap_content"
             android:autofillHints="type username here"
             android:hint="type username here"
-            android:text="first_avenger"
             android:minWidth="100dp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/username_barrier"

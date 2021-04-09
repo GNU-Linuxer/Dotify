@@ -24,10 +24,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater).apply { setContentView(root) }
 
-        // Read previous username
-        prevUsername = binding.usernameTextEdit.text
-        Toast.makeText(this, prevUsername.toString(), Toast.LENGTH_SHORT).show()
-
         // Function that set random play count text
         playCount = Random.nextInt(100000, 1000000);
         binding.playCountText.text = playCount.toString() + " plays"
@@ -36,6 +32,10 @@ class MainActivity : AppCompatActivity() {
             // When the user is currently not editing the username
             if (!isEditing) {
                 binding.changeUserButton.text = "Apply";
+
+                // Prefill the current username to the editable text field
+                binding.usernameTextEdit.setText(binding.usernameText.text);
+
                 // Hide Textview and show EditText
                 binding.usernameText.visibility = View.GONE
                 binding.usernameTextEdit.visibility = View.VISIBLE
@@ -58,6 +58,14 @@ class MainActivity : AppCompatActivity() {
             // When the user is currently editing the username
             else {
                 binding.changeUserButton.text = "Change User";
+
+                // Conditionally apply new username to Textview
+                val newUsername = binding.usernameTextEdit.text;
+                if (newUsername.toString().length == 0) {
+                    Toast.makeText(this, "Username cannot be empty", Toast.LENGTH_SHORT).show()
+                } else {
+                    binding.usernameText.text = newUsername
+                }
 
                 // Show Textview and hide EditText
                 binding.usernameText.visibility = View.VISIBLE
