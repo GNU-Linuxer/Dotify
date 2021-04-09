@@ -163,6 +163,12 @@
             app:layout_constraintLeft_toRightOf="@+id/playButton"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/play_control_barrier"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="previousButton, playButton, nextButton"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

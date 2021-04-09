@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         playCount = Random.nextInt(100000, 1000000);
         binding.playCountText.text = playCount.toString() + " plays"
 
+        // Function that handels when change username button is clicked
         binding.changeUserButton.setOnClickListener {
             // When the user is currently not editing the username
             if (!isEditing) {
