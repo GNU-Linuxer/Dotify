@@ -3,6 +3,6 @@
     <!--  Defines padding around screen edges  -->
     <!--  16dp on all sides  -->
     <dimen name="mediumPadding">16dp</dimen>
-    <dimen name="largePadding">50dp</dimen>
-    <dimen name="smallPadding">10dp</dimen>
+    <dimen name="playControlSize">50dp</dimen>
+    <dimen name="sectionMargin">20dp</dimen>
 </resources>

@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="first_avenger"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:minWidth="100dp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/username_barrier"
@@ -36,7 +36,7 @@
             android:autofillHints="type username here"
             android:hint="type username here"
             android:minWidth="100dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/username_barrier"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Strangers"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +106,7 @@
         android:id="@+id/playCountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/sectionMargin"
         android:text="123456 plays"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -130,8 +130,8 @@
             app:layout_constraintRight_toLeftOf="@id/playButton"
             android:contentDescription="Previous button"
             app:layout_constraintHorizontal_chainStyle="spread"
-            android:layout_height="50dp"
-            android:layout_width="50dp" />
+            android:layout_height="@dimen/playControlSize"
+            android:layout_width="@dimen/playControlSize" />
 
         <ImageButton
             android:id="@+id/playButton"
@@ -145,13 +145,13 @@
             app:layout_constraintRight_toLeftOf="@+id/nextButton"
             android:contentDescription="Previous button"
             app:layout_constraintHorizontal_chainStyle="spread"
-            android:layout_height="50dp"
-            android:layout_width="50dp" />
+            android:layout_height="@dimen/playControlSize"
+            android:layout_width="@dimen/playControlSize" />
 
         <ImageButton
             android:id="@+id/nextButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/playControlSize"
+            android:layout_height="@dimen/playControlSize"
             android:background="@android:color/transparent"
             android:contentDescription="Previous button"
             android:foreground="?selectableItemBackground"
