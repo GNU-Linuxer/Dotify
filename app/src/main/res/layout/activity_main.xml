@@ -10,24 +10,26 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/username_row"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/usernameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="first_avenger"
-            android:textSize="16sp"
             android:minWidth="100dp"
+            android:text="first_avenger"
             android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@id/username_barrier"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/changeUserButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="visible"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/usernameTextEdit"
@@ -36,33 +38,33 @@
             android:autofillHints="type username here"
             android:hint="type username here"
             android:minWidth="100dp"
-            android:textSize="16sp"
             android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/username_barrier"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/changeUserButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/changeUserButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Change User"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/username_barrier"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toRightOf="@id/usernameText"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/username_barrier"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="usernameText, changeUserButton,changeUserButton"/>
+            app:constraint_referenced_ids="usernameText, changeUserButton,changeUserButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -97,7 +99,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="@color/black"
-        android:text="long long long long long long long nameeeer frfefcef ced33er d3ede"
+        android:text="long long long long long long long long long long long name name name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
@@ -116,37 +118,39 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/playCountText">
 
         <ImageButton
             android:id="@+id/previousButton"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_width="@dimen/playControlSize"
+            android:layout_height="@dimen/playControlSize"
+            android:background="@android:color/transparent"
+            android:contentDescription="Previous button"
+            android:foreground="?selectableItemBackground"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_previous"
-            android:background="@android:color/transparent"
-            android:foreground="?selectableItemBackground"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/playButton"
-            android:contentDescription="Previous button"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            android:layout_height="@dimen/playControlSize"
-            android:layout_width="@dimen/playControlSize" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/playButton"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_width="@dimen/playControlSize"
+            android:layout_height="@dimen/playControlSize"
+            android:background="@android:color/transparent"
+            android:contentDescription="Previous button"
+            android:foreground="?selectableItemBackground"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_play"
-            android:background="@android:color/transparent"
-            android:foreground="?selectableItemBackground"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintLeft_toRightOf="@+id/previousButton"
             app:layout_constraintRight_toLeftOf="@+id/nextButton"
-            android:contentDescription="Previous button"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            android:layout_height="@dimen/playControlSize"
-            android:layout_width="@dimen/playControlSize" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/nextButton"
@@ -158,9 +162,9 @@
             android:scaleType="fitCenter"
             android:src="@drawable/ic_next"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintLeft_toRightOf="@+id/playButton"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Barrier
@@ -168,7 +172,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="previousButton, playButton, nextButton"/>
+            app:constraint_referenced_ids="previousButton, playButton, nextButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
