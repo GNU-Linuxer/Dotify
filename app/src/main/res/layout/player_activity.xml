@@ -7,67 +7,6 @@
     android:padding="@dimen/mediumPadding"
     tools:context=".PlayerActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/username_row"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/usernameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="100dp"
-            android:text="first_avenger"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@id/username_barrier"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/changeUserButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/usernameTextEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autofillHints="type username here"
-            android:hint="type username here"
-            android:minWidth="100dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/username_barrier"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/changeUserButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/changeUserButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Change User"
-            app:layout_constraintBottom_toBottomOf="@id/username_barrier"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/usernameText"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/username_barrier"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="usernameText, changeUserButton,changeUserButton" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <ImageView
         android:id="@+id/albumCoverImage"
         android:layout_width="0dp"
@@ -77,8 +16,8 @@
         android:src="@drawable/strangers_cover_art"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_row"
-        app:layout_constraintStart_toStartOf="@id/username_row"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="Seven Lions Album Art" />
 
     <TextView
