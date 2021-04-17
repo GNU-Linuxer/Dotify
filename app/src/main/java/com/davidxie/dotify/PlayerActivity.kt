@@ -12,7 +12,7 @@ import com.davidxie.dotify.databinding.ActivityMainBinding
 import kotlin.random.Random
 
 
-class MainActivity : AppCompatActivity() {
+class PlayerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var playCount: Int = 0
     private var isEditing: Boolean = false;
