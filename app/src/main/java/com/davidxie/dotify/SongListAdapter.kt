@@ -1,14 +1,17 @@
 package com.davidxie.dotify
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.davidxie.dotify.databinding.OneSongLayoutBinding
 import com.ericchee.songdataprovider.Song
+import kotlin.random.Random
 
 class SongListAdapter(private var songList: List<Song>): RecyclerView.Adapter<SongListAdapter.SongListHolder>() {
 
     var onSongClickListener: (position: Int, song: Song) -> Unit = { _, _ -> }
+    var onSongLongClickListener: (position: Int, song: Song) -> Unit = { _, _ -> }
 
     // Create a bunch of view holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongListHolder {
@@ -29,6 +32,11 @@ class SongListAdapter(private var songList: List<Song>): RecyclerView.Adapter<So
 
             songItemRoot.setOnClickListener{
                 onSongClickListener(position, song)
+            }
+
+            songItemRoot.setOnLongClickListener {
+                onSongLongClickListener(position, song)
+                return@setOnLongClickListener true
             }
         }
     }
