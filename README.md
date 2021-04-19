@@ -16,4 +16,5 @@ This app shows a music player interface, with album art, song title, artist, and
 
 ## Screenshot
 
-![Dotify Screenshot](hw1.png)
+![Dotify Song List Screenshot](2-1.png)
+![Dotify Song Player Screenshot](2-2.png)
