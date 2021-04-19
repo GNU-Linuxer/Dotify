@@ -30,11 +30,11 @@ class SongListAdapter(private var songList: List<Song>): RecyclerView.Adapter<So
             tvArtistText.text = song.artist
             ivSongPic.setImageResource(song.smallImageID)
 
-            songItemRoot.setOnClickListener{
+            root.setOnClickListener{
                 onSongClickListener(position, song)
             }
 
-            songItemRoot.setOnLongClickListener {
+            root.setOnLongClickListener {
                 onSongLongClickListener(position, song)
                 return@setOnLongClickListener true
             }
