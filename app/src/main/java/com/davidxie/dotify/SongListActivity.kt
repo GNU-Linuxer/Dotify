@@ -17,12 +17,12 @@ class SongListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_song_list)
+        // SongDataProvider.getAllSongs() will return a a list of Song Objects
+        val songs = SongDataProvider.getAllSongs().toMutableList()
 
         binding = ActivitySongListBinding.inflate(layoutInflater).apply { setContentView(root) }
         with(binding) {
             title = "All Songs"
-            // SongDataProvider.getAllSongs() will return a a list of Song Objects
-            val songs = SongDataProvider.getAllSongs()
 
             // Set Adapter to Recycler View with data
             val adapter = SongListAdapter(songs)
@@ -41,14 +41,13 @@ class SongListActivity : AppCompatActivity() {
             // Long press an item to delete a song from playlist
             adapter.onSongLongClickListener = {position: Int, song: Song ->
                 Toast.makeText(this@SongListActivity, "${song.title} is deleted.", Toast.LENGTH_SHORT).show()
-                val newSongs = songs.toMutableList()
-                newSongs.remove(song)
-                adapter.updateSong(newSongs)
+                songs.remove(song)
+                adapter.updateSong(songs)
             }
 
             shuffleButton.setOnClickListener {
                 // On Refresh Click, update the list
-                adapter.updateSong(songs.toMutableList().shuffled())
+                adapter.updateSong(songs.shuffled())
             }
 
             songSnippetBar.setOnClickListener {
