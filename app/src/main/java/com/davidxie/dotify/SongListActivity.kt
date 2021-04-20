@@ -38,13 +38,6 @@ class SongListActivity : AppCompatActivity() {
                 isSongSelected = true
             }
 
-            // Long press an item to delete a song from playlist
-            adapter.onSongLongClickListener = {position: Int, song: Song ->
-                Toast.makeText(this@SongListActivity, "${song.title} is deleted.", Toast.LENGTH_SHORT).show()
-                songs.remove(song)
-                adapter.updateSong(songs)
-            }
-
             shuffleButton.setOnClickListener {
                 // On Refresh Click, update the list
                 adapter.updateSong(songs.shuffled())

@@ -3,6 +3,7 @@ package com.davidxie.dotify
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.davidxie.dotify.databinding.OneSongLayoutBinding
 import com.ericchee.songdataprovider.Song
@@ -46,8 +47,12 @@ class SongListAdapter(private var songList: List<Song>): RecyclerView.Adapter<So
     }
 
     fun updateSong(newSongList: List<Song>) {
+        val callback = SongDiffCallback(newSongList, songList)
+        val result = DiffUtil.calculateDiff(callback)
+        result.dispatchUpdatesTo(this)
+
+        // Change the list's content after dispatch update
         this.songList = newSongList
-        notifyDataSetChanged()
     }
 
     // Create a View Holder Class (responsible to display 1 row of song in the Recycler View List)
