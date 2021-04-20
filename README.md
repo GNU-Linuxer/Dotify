@@ -1,4 +1,4 @@
-# Dotify by David Xie
+# Dotify by David Xie (Assignment 2)
 
 ## Description
 

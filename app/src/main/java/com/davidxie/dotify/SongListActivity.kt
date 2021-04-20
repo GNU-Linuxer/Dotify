@@ -29,7 +29,7 @@ class SongListActivity : AppCompatActivity() {
             rvSongList.adapter = adapter;
 
             // Handle code when clicking one song (from the list)
-            adapter.onSongClickListener = {position: Int, song: Song ->
+            adapter.onSongClickListener = { _: Int, song: Song ->
                 //Toast.makeText(this@SongListActivity, "Clicked on $position with song ${song.title}.", Toast.LENGTH_SHORT).show()
                 songSnippetBar.visibility = View.VISIBLE
 
