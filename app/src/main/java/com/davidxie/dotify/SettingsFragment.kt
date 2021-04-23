@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.davidxie.dotify.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
+
+    private val navController by lazy{findNavController()}
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,6 +23,14 @@ class SettingsFragment : Fragment() {
         with(binding) {
             profileButton.setOnClickListener{
                 Toast.makeText(requireContext(), "Profile button is clicked", Toast.LENGTH_SHORT).show()
+            }
+            statisticsButton.setOnClickListener{
+                Toast.makeText(requireContext(), "Statistics button is clicked", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.statisticsFragment)
+            }
+            aboutButton.setOnClickListener{
+                Toast.makeText(requireContext(), "About button is clicked", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.aboutFragment2)
             }
         }
 
