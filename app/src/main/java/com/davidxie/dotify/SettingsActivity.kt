@@ -7,7 +7,7 @@ import android.os.Bundle
 import com.ericchee.songdataprovider.Song
 
 fun navigateToSettingsActivity(context: Context, song: Song, playCount: Int) = with(context){
-    val intent = Intent(this, PlayerActivity::class.java).apply {
+    val intent = Intent(this, SettingsActivity::class.java).apply {
         val bundle = Bundle().apply {
             // Pack data inside this bundle
             putParcelable(SONG_KEY, song)
@@ -18,6 +18,7 @@ fun navigateToSettingsActivity(context: Context, song: Song, playCount: Int) = w
 }
 
 class SettingsActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)

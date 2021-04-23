@@ -85,7 +85,7 @@ class PlayerActivity : AppCompatActivity() {
 
     }
 
-    // Handel when the top-left back button is clicked
+    // Handle when the top-left back button is clicked
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return super.onSupportNavigateUp()
