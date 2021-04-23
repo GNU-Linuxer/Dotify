@@ -12,6 +12,7 @@ import com.ericchee.songdataprovider.Song
 import kotlin.random.Random
 
 const val SONG_KEY = "song object"
+const val PLAY_COUNT_KEY = "song play count"
 
 fun navigateToPlayerActivity(context: Context, song: Song) = with(context){
     val intent = Intent(this, PlayerActivity::class.java).apply {
@@ -48,6 +49,14 @@ class PlayerActivity : AppCompatActivity() {
                 artistText.text = songObj.artist
             }
             playCountText.text = playCount.toString() + " plays"
+
+            // Clicking on the settings button will navigate to SettingsActivity
+            settingsButton.setOnClickListener {
+                if (songObj != null) {
+                    val songObjImmutable: Song = songObj
+                    navigateToSettingsActivity(this@PlayerActivity, songObjImmutable, playCount)
+                }
+            }
 
             // Function that handles album art long click
             // Code for handle long-click is adapted from https://stackoverflow.com/questions/49712663/how-to-properly-use-setonlongclicklistener-with-kotlin
