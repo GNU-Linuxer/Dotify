@@ -9,7 +9,17 @@
         android:id="@+id/settingsFragment"
         android:name="com.davidxie.dotify.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment2" />
+        <action
+            android:id="@+id/action_settingsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment2"
         android:name="com.davidxie.dotify.AboutFragment"

@@ -23,6 +23,7 @@ class SettingsFragment : Fragment() {
         with(binding) {
             profileButton.setOnClickListener{
                 Toast.makeText(requireContext(), "Profile button is clicked", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.profileFragment)
             }
             statisticsButton.setOnClickListener{
                 Toast.makeText(requireContext(), "Statistics button is clicked", Toast.LENGTH_SHORT).show()
