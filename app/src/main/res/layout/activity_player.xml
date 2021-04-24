@@ -20,13 +20,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
-            app:layout_constraintBottom_toBottomOf="@id/username_barrier"
+            app:layout_constraintBottom_toBottomOf="@id/top_toolbar_barrier"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/username_barrier"
+            android:id="@+id/top_toolbar_barrier"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:barrierDirection="bottom"

@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="@+id/songPreviewText" />
 
         <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/username_barrier"
+            android:id="@+id/top_toolbar_barrier"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:barrierDirection="top"
