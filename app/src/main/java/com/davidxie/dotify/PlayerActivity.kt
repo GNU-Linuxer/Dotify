@@ -5,9 +5,8 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.widget.Toast
-import com.davidxie.dotify.databinding.PlayerActivityBinding
+import com.davidxie.dotify.databinding.ActivityPlayerBinding
 import com.ericchee.songdataprovider.Song
 import kotlin.random.Random
 
@@ -26,7 +25,7 @@ fun navigateToPlayerActivity(context: Context, song: Song) = with(context){
 }
 
 class PlayerActivity : AppCompatActivity() {
-    private lateinit var binding: PlayerActivityBinding
+    private lateinit var binding: ActivityPlayerBinding
     // Function that set random play count text
     private var playCount: Int = Random.nextInt(100000, 1000000);
 
@@ -43,8 +42,8 @@ class PlayerActivity : AppCompatActivity() {
         }
 
 
-        setContentView(R.layout.player_activity)
-        binding = PlayerActivityBinding.inflate(layoutInflater).apply { setContentView(root) }
+        setContentView(R.layout.activity_player)
+        binding = ActivityPlayerBinding.inflate(layoutInflater).apply { setContentView(root) }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
