@@ -32,6 +32,17 @@ class PlayerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Check whether we're recreating a previously destroyed instance
+        if (savedInstanceState != null) {
+            // we're re-creating this activity
+            with(savedInstanceState) {
+                // Restore play count number (second parameter is the default value if for some reason the saved value does not pass in)
+                playCount = getInt(PLAY_COUNT_KEY, -1)
+            }
+        }
+
+
         setContentView(R.layout.player_activity)
         binding = PlayerActivityBinding.inflate(layoutInflater).apply { setContentView(root) }
 
@@ -93,4 +104,9 @@ class PlayerActivity : AppCompatActivity() {
         return super.onSupportNavigateUp()
     }
 
+    // Save play count number
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(PLAY_COUNT_KEY, playCount)
+        super.onSaveInstanceState(outState)
+    }
 }

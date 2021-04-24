@@ -2,12 +2,14 @@ package com.davidxie.dotify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.davidxie.dotify.databinding.ActivitySongListBinding
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
+
+const val IS_MINI_PLAYER_SHOWN_KEY = "is mini player shown"
+const val SELECTED_SONG_KEY = "selected song in list"
 
 class SongListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySongListBinding
@@ -16,6 +18,27 @@ class SongListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Check whether we're recreating a previously destroyed instance
+        if (savedInstanceState != null) {
+            // we're re-creating this activity
+            with(savedInstanceState) {
+                isSongSelected = getBoolean(IS_MINI_PLAYER_SHOWN_KEY, false)
+
+                // Only read the selected song content if a song is selected
+                if(isSongSelected) {
+                    var selectedSongTemp = getParcelable<Song>(SELECTED_SONG_KEY)
+                    if (selectedSongTemp == null) {
+                        // if songObject is not passed in to this savedInstanceState, use the first song from SongDataProvider
+                        selectedSongTemp=SongDataProvider.getAllSongs()[0]
+                        Toast.makeText(this@SongListActivity,"Null Song Object detected", Toast.LENGTH_SHORT).show()
+                    }
+                    selectedSong = selectedSongTemp
+                } else {
+                    Toast.makeText(this@SongListActivity,"Song is not selected yet", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
         setContentView(R.layout.activity_song_list)
         // SongDataProvider.getAllSongs() will return a a list of Song Objects
         val songs = SongDataProvider.getAllSongs().toMutableList()
@@ -38,6 +61,17 @@ class SongListActivity : AppCompatActivity() {
                 isSongSelected = true
             }
 
+            if(isSongSelected) {
+                // check wiether a lateinit var is initialized
+                if(!this@SongListActivity::selectedSong.isInitialized) {
+                    Toast.makeText(this@SongListActivity,"Null Song Object detected", Toast.LENGTH_SHORT).show()
+                } else {
+                    songSnippetBar.visibility = View.VISIBLE
+                }
+            } else {
+                songSnippetBar.visibility = View.GONE
+            }
+
             shuffleButton.setOnClickListener {
                 // On Refresh Click, update the list
                 adapter.updateSong(songs.shuffled())
@@ -51,5 +85,15 @@ class SongListActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean(IS_MINI_PLAYER_SHOWN_KEY, isSongSelected)
+        if(isSongSelected) {
+            outState.putParcelable(SELECTED_SONG_KEY, selectedSong)
+        } else {
+            //Toast.makeText(this@SongListActivity,"Song is not selected yet", Toast.LENGTH_SHORT).show()
+        }
+        super.onSaveInstanceState(outState)
     }
 }
