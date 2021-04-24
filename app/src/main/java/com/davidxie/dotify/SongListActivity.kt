@@ -56,17 +56,20 @@ class SongListActivity : AppCompatActivity() {
                 //Toast.makeText(this@SongListActivity, "Clicked on $position with song ${song.title}.", Toast.LENGTH_SHORT).show()
                 songSnippetBar.visibility = View.VISIBLE
 
-                songPreviewText.text = "${song.title} - ${song.artist}"
                 selectedSong = song;
+                songPreviewText.text = "${selectedSong.title} - ${selectedSong.artist}"
                 isSongSelected = true
             }
 
+            // Note: this is only used when we're restoring this Activity (will not be called when onSongClickListener is clicked at first time)
             if(isSongSelected) {
-                // check wiether a lateinit var is initialized
+                // check whether a lateinit var is initialized
                 if(!this@SongListActivity::selectedSong.isInitialized) {
                     Toast.makeText(this@SongListActivity,"Null Song Object detected", Toast.LENGTH_SHORT).show()
                 } else {
+                    //Toast.makeText(this@SongListActivity,"Selected 1 song", Toast.LENGTH_SHORT).show()
                     songSnippetBar.visibility = View.VISIBLE
+                    songPreviewText.text = "${selectedSong.title} - ${selectedSong.artist}"
                 }
             } else {
                 songSnippetBar.visibility = View.GONE
