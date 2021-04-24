@@ -55,6 +55,8 @@ class PlayerActivity : AppCompatActivity() {
                 if (songObj != null) {
                     val songObjImmutable: Song = songObj
                     navigateToSettingsActivity(this@PlayerActivity, songObjImmutable, playCount)
+                } else {
+                    Toast.makeText(this@PlayerActivity,"Null Song Object detected", Toast.LENGTH_SHORT).show()
                 }
             }
 

@@ -10,9 +10,9 @@ This app shows a music player interface, with album art, song title, artist, and
 
 ## Attempted extra credit
 
-1. Show a stock Android back arrow button, ←, in the Header/Toolbar of Activity B. When clicked, it should navigate back to SongListActivity (+.25)
-    
-2. When a user presses shuffle, the list should animate the changes using DiffUtil (+1)
+1. Every Fragment (other than SettingsFragment) has a Up/back button in the top right corner. Clicking will take you back to the previous fragment (+.25)
+
+2. (TODO) Instead of Settings <Button> in your layout from requirement #1, make a Settings "Action Button” in the app bar (header bar at the top). https://developer.android.com/training/appbar/actions (+.25)
 
 ## Screenshot
 

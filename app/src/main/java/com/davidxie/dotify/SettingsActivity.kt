@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.ericchee.songdataprovider.Song
@@ -38,10 +39,12 @@ class SettingsActivity : AppCompatActivity() {
             // if songObject is not passed in to this fragment, the first song will be used
             val demoSong: Song = SongDataProvider.getAllSongs()[0]
             songObj = demoSong
+            Toast.makeText(this@SettingsActivity,"Null Song Object detected", Toast.LENGTH_SHORT).show()
         }
         if (playCount == null) {
             // if playCount is not passed in to this fragment, we set a playcount of -1
             playCount = -1
+            Toast.makeText(this@SettingsActivity,"Null Player Count detected", Toast.LENGTH_SHORT).show()
         }
 
         navController.setGraph(R.navigation.nav_graph, Bundle().apply {
