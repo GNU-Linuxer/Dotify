@@ -31,7 +31,7 @@ class SettingsFragment : Fragment() {
             }
             aboutButton.setOnClickListener{
                 Toast.makeText(requireContext(), "About button is clicked", Toast.LENGTH_SHORT).show()
-                navController.navigate(R.id.aboutFragment2)
+                navController.navigate(R.id.aboutFragment)
             }
         }
 
