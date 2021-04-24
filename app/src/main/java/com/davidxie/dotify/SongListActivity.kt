@@ -13,8 +13,7 @@ const val SELECTED_SONG_KEY = "selected song in list"
 
 class SongListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySongListBinding
-    private var isSongSelected: Boolean = false
-    private lateinit var selectedSong: Song
+    private var selectedSong: Song? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,19 +21,10 @@ class SongListActivity : AppCompatActivity() {
         if (savedInstanceState != null) {
             // we're re-creating this activity
             with(savedInstanceState) {
-                isSongSelected = getBoolean(IS_MINI_PLAYER_SHOWN_KEY, false)
-
                 // Only read the selected song content if a song is selected
-                if(isSongSelected) {
-                    var selectedSongTemp: Song? = getParcelable<Song>(SELECTED_SONG_KEY)
-                    if (selectedSongTemp == null) {
-                        // if songObject is not passed in to this savedInstanceState, use the first song from SongDataProvider
-                        selectedSongTemp=SongDataProvider.getAllSongs()[0]
-                        Toast.makeText(this@SongListActivity,"Null Song Object detected", Toast.LENGTH_SHORT).show()
-                    }
-                    selectedSong = selectedSongTemp
-                } else {
-                    //Toast.makeText(this@SongListActivity,"Song is not selected yet", Toast.LENGTH_SHORT).show()
+                selectedSong = getParcelable(SELECTED_SONG_KEY)
+                if (selectedSong == null) {
+                    Toast.makeText(this@SongListActivity, "Song is not selected yet", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -55,23 +45,16 @@ class SongListActivity : AppCompatActivity() {
             adapter.onSongClickListener = { _: Int, song: Song ->
                 //Toast.makeText(this@SongListActivity, "Clicked on $position with song ${song.title}.", Toast.LENGTH_SHORT).show()
                 songSnippetBar.visibility = View.VISIBLE
-
-                selectedSong = song;
-                songPreviewText.text = "${selectedSong.title} - ${selectedSong.artist}"
-                isSongSelected = true
+                this@SongListActivity.selectedSong = song;
+                songPreviewText.text = "${song.title} - ${song.artist}"
             }
 
-            // Note: this is only used when we're restoring this Activity (will not be called when onSongClickListener is clicked at first time)
-            if(isSongSelected) {
-                // check whether a lateinit var is initialized
-                if(!this@SongListActivity::selectedSong.isInitialized) {
-                    Toast.makeText(this@SongListActivity,"Null Song Object detected", Toast.LENGTH_SHORT).show()
-                } else {
-                    //Toast.makeText(this@SongListActivity,"Selected 1 song", Toast.LENGTH_SHORT).show()
-                    songSnippetBar.visibility = View.VISIBLE
-                    songPreviewText.text = "${selectedSong.title} - ${selectedSong.artist}"
-                }
+            val currSelectedSong: Song? = selectedSong
+            if(currSelectedSong != null) {
+                songSnippetBar.visibility = View.VISIBLE
+                songPreviewText.text = "${currSelectedSong.title} - ${currSelectedSong.artist}"
             } else {
+                //Toast.makeText(this@SongListActivity,"Song is not selected yet", Toast.LENGTH_SHORT).show()
                 songSnippetBar.visibility = View.GONE
             }
 
@@ -81,22 +64,17 @@ class SongListActivity : AppCompatActivity() {
             }
 
             songSnippetBar.setOnClickListener {
-                if (isSongSelected) {
-                    navigateToPlayerActivity(this@SongListActivity, selectedSong)
-                } else {
-                    Toast.makeText(this@SongListActivity, "Please tap a song from this list to select a song.", Toast.LENGTH_SHORT).show()
-                }
+                // if selectedSong is null, immediately end this callback function and not navigate to PlayerActivity
+                val selectedSong: Song = this@SongListActivity.selectedSong ?: return@setOnClickListener
+                navigateToPlayerActivity(this@SongListActivity, selectedSong)
             }
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putBoolean(IS_MINI_PLAYER_SHOWN_KEY, isSongSelected)
-        if(isSongSelected) {
-            outState.putParcelable(SELECTED_SONG_KEY, selectedSong)
-        } else {
-            //Toast.makeText(this@SongListActivity,"Song is not selected yet", Toast.LENGTH_SHORT).show()
-        }
+        // if selectedSong is null, we would not continue the SaveInstanceState
+        val selectedSong: Song = this.selectedSong ?: return
+        outState.putParcelable(SELECTED_SONG_KEY, selectedSong)
         super.onSaveInstanceState(outState)
     }
 }
