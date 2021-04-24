@@ -12,7 +12,7 @@ This app shows a music player interface, with album art, song title, artist, and
 
 1. Every Fragment (other than SettingsFragment) has a Up/back button in the top right corner. Clicking will take you back to the previous fragment (+.25)
 
-2. (TODO) Instead of Settings <Button> in your layout from requirement #1, make a Settings "Action Button” in the app bar (header bar at the top). https://developer.android.com/training/appbar/actions (+.25)
+2. Instead of Settings <Button> in your layout from requirement #1, make a Settings "Action Button” in the app bar (header bar at the top). https://developer.android.com/training/appbar/actions (+.25)
 
 ## Screenshot
 

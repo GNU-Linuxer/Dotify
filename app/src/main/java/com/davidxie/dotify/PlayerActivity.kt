@@ -5,6 +5,8 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.davidxie.dotify.databinding.ActivityPlayerBinding
 import com.ericchee.songdataprovider.Song
@@ -28,6 +30,7 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPlayerBinding
     // Function that set random play count text
     private var playCount: Int = Random.nextInt(100000, 1000000);
+    private var songObj: Song? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,34 +44,25 @@ class PlayerActivity : AppCompatActivity() {
             }
         }
 
-
         setContentView(R.layout.activity_player)
         binding = ActivityPlayerBinding.inflate(layoutInflater).apply { setContentView(root) }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val launchIntent = intent
+        songObj = launchIntent.extras?.getParcelable(SONG_KEY)
+
         with(binding) {
-            val launchIntent = intent
-            val songObj: Song? = launchIntent.extras?.getParcelable(SONG_KEY)
             //Toast.makeText(this@PlayerActivity, "received ${songObj?.title}", Toast.LENGTH_SHORT).show()
 
             // Dynamically set PlayerActivity's content using passed-in songObj
-            if (songObj != null) { // otherwise, default values hard-coded in the player_activity.xml will be used
-                albumCoverImage.setImageResource(songObj.largeImageID)
-                titleText.text = songObj.title
-                artistText.text = songObj.artist
+            // otherwise, default values hard-coded in the player_activity.xml will be used
+            songObj?.let { nonNullSongObj ->
+                albumCoverImage.setImageResource(nonNullSongObj.largeImageID)
+                titleText.text = nonNullSongObj.title
+                artistText.text = nonNullSongObj.artist
             }
             playCountText.text = playCount.toString() + " plays"
-
-            // Clicking on the settings button will navigate to SettingsActivity
-            settingsButton.setOnClickListener {
-                if (songObj != null) {
-                    val songObjImmutable: Song = songObj
-                    navigateToSettingsActivity(this@PlayerActivity, songObjImmutable, playCount)
-                } else {
-                    Toast.makeText(this@PlayerActivity,"Null Song Object detected", Toast.LENGTH_SHORT).show()
-                }
-            }
 
             // Function that handles album art long click
             // Code for handle long-click is adapted from https://stackoverflow.com/questions/49712663/how-to-properly-use-setonlongclicklistener-with-kotlin
@@ -95,6 +89,22 @@ class PlayerActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    // Menu icon behavior
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.player_menu, menu)
+        return true // we modified option menu (return false if we need to hide it, for instance, user is not logged in yet)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.player_menu_settings -> {
+                songObj?.let { nonNullSongObj ->
+                    navigateToSettingsActivity(this@PlayerActivity, nonNullSongObj, playCount)
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     // Handle when the top-left back button is clicked
