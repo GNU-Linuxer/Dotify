@@ -23,9 +23,6 @@ class SongListActivity : AppCompatActivity() {
             with(savedInstanceState) {
                 // Only read the selected song content if a song is selected
                 selectedSong = getParcelable(SELECTED_SONG_KEY)
-                if (selectedSong == null) {
-                    Toast.makeText(this@SongListActivity, "Song is not selected yet", Toast.LENGTH_SHORT).show()
-                }
             }
         }
 

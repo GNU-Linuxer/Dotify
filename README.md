@@ -1,4 +1,4 @@
-# Dotify by David Xie (Assignment 2)
+# Dotify by David Xie (Assignment 3)
 
 ## Description
 
@@ -16,5 +16,6 @@ This app shows a music player interface, with album art, song title, artist, and
 
 ## Screenshot
 
-![Dotify Song List Screenshot](hw2-1.png)
-![Dotify Song Player Screenshot](hw2-2.png)
+![Dotify Song Player Screenshot](hw3-1.png)
+![Dotify Profile Page](hw3-2.png)
+![Dotify Statistics Page](hw3-3.png)
