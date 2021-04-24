@@ -16,12 +16,13 @@
         android:src="@drawable/strangers_cover_art"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:padding="@dimen/mediumPadding"
         android:contentDescription="Seven Lions Album Art" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rightColumn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintLeft_toRightOf="@id/albumCoverImage"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,6 +32,7 @@
             android:id="@+id/settingsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="Settings"
             app:layout_constraintBottom_toBottomOf="@id/top_toolbar"
             app:layout_constraintEnd_toEndOf="parent"

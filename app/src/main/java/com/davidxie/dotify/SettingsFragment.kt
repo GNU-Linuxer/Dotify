@@ -21,7 +21,7 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentSettingsBinding.inflate(inflater)
 
         // if songObject is not passed in to this fragment, the first song will be use, with a playcount of -1
@@ -29,15 +29,15 @@ class SettingsFragment : Fragment() {
 
         with(binding) {
             profileButton.setOnClickListener{
-                Toast.makeText(requireContext(), "Profile button is clicked", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "Profile button is clicked", Toast.LENGTH_SHORT).show()
                 navController.navigate(R.id.profileFragment)
             }
             statisticsButton.setOnClickListener{
-                Toast.makeText(requireContext(), "Statistics button is clicked", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "Statistics button is clicked", Toast.LENGTH_SHORT).show()
                 navController.navigate(SettingsFragmentDirections.actionSettingsFragmentToStatisticsFragment(safeArgs.songObject, safeArgs.songPlayCount))
             }
             aboutButton.setOnClickListener{
-                Toast.makeText(requireContext(), "About button is clicked", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "About button is clicked", Toast.LENGTH_SHORT).show()
                 navController.navigate(R.id.aboutFragment)
             }
         }

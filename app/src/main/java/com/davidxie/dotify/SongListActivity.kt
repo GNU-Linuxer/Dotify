@@ -26,7 +26,7 @@ class SongListActivity : AppCompatActivity() {
 
                 // Only read the selected song content if a song is selected
                 if(isSongSelected) {
-                    var selectedSongTemp = getParcelable<Song>(SELECTED_SONG_KEY)
+                    var selectedSongTemp: Song? = getParcelable<Song>(SELECTED_SONG_KEY)
                     if (selectedSongTemp == null) {
                         // if songObject is not passed in to this savedInstanceState, use the first song from SongDataProvider
                         selectedSongTemp=SongDataProvider.getAllSongs()[0]
@@ -34,7 +34,7 @@ class SongListActivity : AppCompatActivity() {
                     }
                     selectedSong = selectedSongTemp
                 } else {
-                    Toast.makeText(this@SongListActivity,"Song is not selected yet", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@SongListActivity,"Song is not selected yet", Toast.LENGTH_SHORT).show()
                 }
             }
         }

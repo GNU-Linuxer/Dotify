@@ -17,7 +17,7 @@ class StatisticsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding= FragmentStatisticsBinding.inflate(inflater)
 
         val songObject: Song = safeArgs.songObject

@@ -12,7 +12,7 @@ class AboutFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentAboutBinding.inflate(inflater)
         with(binding){
             tvVersion.text = "Version ${BuildConfig.VERSION_NAME}"
