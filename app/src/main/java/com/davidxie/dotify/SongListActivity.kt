@@ -46,13 +46,10 @@ class SongListActivity : AppCompatActivity() {
                 songPreviewText.text = "${song.title} - ${song.artist}"
             }
 
-            val currSelectedSong: Song? = selectedSong
-            if(currSelectedSong != null) {
+            selectedSong?.let { nonNullSelectedSong ->
+                // Note: two statements below won't be executed if selectedSong is null
                 songSnippetBar.visibility = View.VISIBLE
-                songPreviewText.text = "${currSelectedSong.title} - ${currSelectedSong.artist}"
-            } else {
-                //Toast.makeText(this@SongListActivity,"Song is not selected yet", Toast.LENGTH_SHORT).show()
-                songSnippetBar.visibility = View.GONE
+                songPreviewText.text = "${nonNullSelectedSong.title} - ${nonNullSelectedSong.artist}"
             }
 
             shuffleButton.setOnClickListener {
