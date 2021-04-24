@@ -19,6 +19,12 @@
         <action
             android:id="@+id/action_settingsFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
+        <argument
+            android:name="song object"
+            app:argType="com.ericchee.songdataprovider.Song" />
+        <argument
+            android:name="song play count"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

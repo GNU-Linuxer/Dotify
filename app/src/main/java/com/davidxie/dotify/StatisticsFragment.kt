@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.davidxie.dotify.databinding.FragmentStatisticsBinding
+import com.ericchee.songdataprovider.Song
 
 class StatisticsFragment : Fragment() {
 
-    val safeArgs:StatisticsFragmentArgs by navArgs()
+    private val safeArgs:StatisticsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,8 +20,8 @@ class StatisticsFragment : Fragment() {
     ): View? {
         val binding= FragmentStatisticsBinding.inflate(inflater)
 
-        val songObject = safeArgs.songObject
-        val playCount = safeArgs.songPlayCount
+        val songObject: Song = safeArgs.songObject
+        val playCount: Int = safeArgs.songPlayCount
 
         with(binding){
             ivSongPic.setImageResource(songObject.largeImageID)
