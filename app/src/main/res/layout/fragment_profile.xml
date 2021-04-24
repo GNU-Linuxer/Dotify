@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment"
-    android:padding="16dp">
+    android:padding="@dimen/mediumPadding">
 
 
     <ImageView
@@ -41,7 +42,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvUsername"
         android:paddingTop="50dp"
-        android:paddingBottom="10dp"/>
+        android:paddingBottom="@dimen/text_bottom_padding"/>
 
     <TextView
         android:id="@+id/tvEmail"
@@ -51,7 +52,7 @@
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAge"
-        android:paddingBottom="10dp"/>
+        android:paddingBottom="@dimen/text_bottom_padding"/>
 
     <TextView
         android:id="@+id/tvJoinDate"
@@ -61,7 +62,7 @@
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvEmail"
-        android:paddingBottom="10dp"/>
+        android:paddingBottom="@dimen/text_bottom_padding"/>
 
     <TextView
         android:id="@+id/tvHeight"
@@ -71,7 +72,7 @@
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvJoinDate"
-        android:paddingBottom="10dp"/>
+        android:paddingBottom="@dimen/text_bottom_padding"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

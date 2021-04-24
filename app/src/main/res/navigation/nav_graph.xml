@@ -34,5 +34,12 @@
         android:id="@+id/statisticsFragment"
         android:name="com.davidxie.dotify.StatisticsFragment"
         android:label="fragment_statistics"
-        tools:layout="@layout/fragment_statistics" />
+        tools:layout="@layout/fragment_statistics" >
+        <argument
+            android:name="song object"
+            app:argType="com.ericchee.songdataprovider.Song" />
+        <argument
+            android:name="song play count"
+            app:argType="integer" />
+    </fragment>
 </navigation>
