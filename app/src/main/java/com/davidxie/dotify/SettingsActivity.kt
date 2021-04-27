@@ -31,48 +31,18 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //DEBUG codes
-        intent.extras?.getParcelable<Song>(SONG_KEY)?.let{
-            Toast.makeText(this@SettingsActivity, it.title, Toast.LENGTH_SHORT).show()
-        }
-        intent.extras?.getInt(PLAY_COUNT_KEY)?.let{
-            Toast.makeText(this@SettingsActivity,it.toString(), Toast.LENGTH_SHORT).show()
-        }
-
         binding = ActivitySettingsBinding.inflate(layoutInflater).apply { setContentView(root) }
-        with(binding){
+        with(binding){ // TIP: if I set view binding, I should not use the setContentView(R.layout.activity_settings) (that will create the View twice, which will crash the app)
             // Programmatically set the nav graph
-            navController.setGraph(R.navigation.nav_graph, Bundle().apply {
-                putParcelable("song", intent.extras?.getParcelable<Song>(SONG_KEY))
-                putInt("play", intent.extras?.getInt(PLAY_COUNT_KEY) ?: -1)
-            })
+            navController.setGraph(R.navigation.nav_graph, intent.extras)
         }
 
-//        val launchIntent = intent
-//        var songObj: Song? = launchIntent.extras?.getParcelable(SONG_KEY)
-//        var playCount: Int? = launchIntent.extras?.getInt(PLAY_COUNT_KEY)
-//
-//        if (songObj == null) {
-//            // if songObject is not passed in to this fragment, the first song will be used
-//            songObj = SongDataProvider.getAllSongs()[0]
-//            Toast.makeText(this@SettingsActivity,"Null Song Object detected", Toast.LENGTH_SHORT).show()
-//        }
-//        if (playCount == null) {
-//            // if playCount is not passed in to this fragment, we set a playcount of -1
-//            playCount = -1
-//            Toast.makeText(this@SettingsActivity,"Null Player Count detected", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        navController.setGraph(R.navigation.nav_graph, Bundle().apply {
-//            putParcelable(SONG_KEY, songObj)
-//            putInt(PLAY_COUNT_KEY, playCount)
-//        })
 
-        //setupActionBarWithNavController(navController)
+        setupActionBarWithNavController(navController)
     }
 
-//    override fun onSupportNavigateUp(): Boolean {
-//        navController.navigateUp()
-//        return true
-//    }
+    override fun onSupportNavigateUp(): Boolean {
+        navController.navigateUp()
+        return true
+    }
 }

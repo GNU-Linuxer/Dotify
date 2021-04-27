@@ -11,10 +11,10 @@
         android:label="Settings"
         tools:layout="@layout/fragment_settings" >
         <argument
-            android:name="song"
+            android:name="song object"
             app:argType="com.ericchee.songdataprovider.Song" />
         <argument
-            android:name="play"
+            android:name="song play count"
             app:argType="integer" />
     </fragment>
     <fragment
