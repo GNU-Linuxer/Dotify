@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.davidxie.dotify.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="Settings"
         tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_settingsFragment_to_aboutFragment2"
@@ -29,17 +29,17 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.davidxie.dotify.AboutFragment"
-        android:label="fragment_about"
+        android:label="About Dotify"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.davidxie.dotify.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="com.davidxie.dotify.StatisticsFragment"
-        android:label="fragment_statistics"
+        android:label="Statistics"
         tools:layout="@layout/fragment_statistics" >
         <argument
             android:name="song object"
