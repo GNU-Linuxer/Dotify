@@ -10,20 +10,11 @@
         android:name="com.davidxie.dotify.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_settings" >
-        <action
-            android:id="@+id/action_settingsFragment_to_aboutFragment2"
-            app:destination="@id/aboutFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_statisticsFragment"
-            app:destination="@id/statisticsFragment" />
         <argument
-            android:name="song object"
+            android:name="song"
             app:argType="com.ericchee.songdataprovider.Song" />
         <argument
-            android:name="song play count"
+            android:name="play"
             app:argType="integer" />
     </fragment>
     <fragment
@@ -48,4 +39,13 @@
             android:name="song play count"
             app:argType="integer" />
     </fragment>
+    <action
+        android:id="@+id/action_global_statisticsFragment"
+        app:destination="@id/statisticsFragment" />
+    <action
+        android:id="@+id/action_global_aboutFragment"
+        app:destination="@id/aboutFragment" />
+    <action
+        android:id="@+id/action_global_profileFragment"
+        app:destination="@id/profileFragment" />
 </navigation>

@@ -34,7 +34,7 @@ class SettingsActivity : AppCompatActivity() {
 
         //DEBUG codes
         intent.extras?.getParcelable<Song>(SONG_KEY)?.let{
-            Toast.makeText(this@SettingsActivity,it.title.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@SettingsActivity, it.title, Toast.LENGTH_SHORT).show()
         }
         intent.extras?.getInt(PLAY_COUNT_KEY)?.let{
             Toast.makeText(this@SettingsActivity,it.toString(), Toast.LENGTH_SHORT).show()
@@ -43,7 +43,10 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater).apply { setContentView(root) }
         with(binding){
             // Programmatically set the nav graph
-            navController.setGraph(R.navigation.nav_graph, intent.extras)
+            navController.setGraph(R.navigation.nav_graph, Bundle().apply {
+                putParcelable("song", intent.extras?.getParcelable<Song>(SONG_KEY))
+                putInt("play", intent.extras?.getInt(PLAY_COUNT_KEY) ?: -1)
+            })
         }
 
 //        val launchIntent = intent
