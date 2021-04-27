@@ -15,6 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:defaultNavHost="true" />
+        app:defaultNavHost="true"
+        tools:layout="@layout/fragment_settings" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
