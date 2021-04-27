@@ -30,7 +30,6 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
 
         //DEBUG codes
         intent.extras?.getParcelable<Song>(SONG_KEY)?.let{
