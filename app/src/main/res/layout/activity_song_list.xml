@@ -16,6 +16,7 @@
         app:layout_constraintBottom_toTopOf="@id/songSnippetBar"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/one_song_layout"
+        android:visibility="gone"
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,13 +64,31 @@
         android:id="@+id/tvLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loading User data..."
+        android:text="Loading Song data..."
         android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="visible"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivError"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="Tom Hanks actor in Sully"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_error_icon_foreground"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tvError"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/design_default_color_error" />
 
     <TextView
         android:id="@+id/tvError"
@@ -78,10 +97,11 @@
         android:text="Error occured while fetching User data"
         android:textColor="@color/design_default_color_error"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/ivError"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,8 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.davidxie.dotify.R
 import com.davidxie.dotify.databinding.ActivitySettingsBinding
-import com.ericchee.songdataprovider.Song
-import com.ericchee.songdataprovider.SongDataProvider
+import com.davidxie.dotify.model.Song
 
 fun navigateToSettingsActivity(context: Context, song: Song, playCount: Int) = with(context){
     val intent = Intent(this, SettingsActivity::class.java).apply {

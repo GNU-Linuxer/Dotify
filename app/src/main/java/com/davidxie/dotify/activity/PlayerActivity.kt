@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import coil.load
 import com.davidxie.dotify.DotifyApplication
 import com.davidxie.dotify.R
 import com.davidxie.dotify.databinding.ActivityPlayerBinding
@@ -53,7 +54,7 @@ class PlayerActivity : AppCompatActivity() {
             // Dynamically set PlayerActivity's content using passed-in songObj
             // otherwise, default values hard-coded in the player_activity.xml will be used
             DotifyApp.selectedSong?.let { nonNullSongObj ->
-                albumCoverImage.setImageResource(nonNullSongObj.largeImageID)
+                albumCoverImage.load(nonNullSongObj.largeImageURL)
                 titleText.text = nonNullSongObj.title
                 artistText.text = nonNullSongObj.artist
             }

@@ -7,8 +7,9 @@ import android.view.View
 import com.davidxie.dotify.R
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.davidxie.dotify.databinding.FragmentStatisticsBinding
-import com.ericchee.songdataprovider.Song
+import com.davidxie.dotify.model.Song
 
 class StatisticsFragment : Fragment() {
 
@@ -25,7 +26,7 @@ class StatisticsFragment : Fragment() {
         val playCount: Int = safeArgs.songPlayCount
 
         with(binding){
-            ivSongPic.setImageResource(songObject.largeImageID)
+            ivSongPic.load(songObject.largeImageURL)
 
             tvPlayCount.text = "Play Count: ${playCount.toString()}"
             tvSongTitle.text = songObject.title
