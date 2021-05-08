@@ -15,13 +15,8 @@ import kotlin.random.Random
 const val SONG_KEY = "song object"
 const val PLAY_COUNT_KEY = "song play count"
 
-fun navigateToPlayerActivity(context: Context, song: Song) = with(context){
+fun navigateToPlayerActivity(context: Context) = with(context){
     val intent = Intent(this, PlayerActivity::class.java).apply {
-        val bundle = Bundle().apply {
-            // Pack data inside this bundle
-            putParcelable(SONG_KEY, song)
-        }
-        putExtras(bundle)
     }
     startActivity(intent)
 }
@@ -30,7 +25,6 @@ class PlayerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPlayerBinding
     // Function that set random play count text
     private var playCount: Int = Random.nextInt(100000, 1000000);
-    private var songObj: Song? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,20 +38,20 @@ class PlayerActivity : AppCompatActivity() {
             }
         }
 
+        // Get the Dotify Application
+        val DotifyApp = (application as DotifyApplication)
+
         setContentView(R.layout.activity_player)
         binding = ActivityPlayerBinding.inflate(layoutInflater).apply { setContentView(root) }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        val launchIntent = intent
-        songObj = launchIntent.extras?.getParcelable(SONG_KEY)
 
         with(binding) {
             //Toast.makeText(this@PlayerActivity, "received ${songObj?.title}", Toast.LENGTH_SHORT).show()
 
             // Dynamically set PlayerActivity's content using passed-in songObj
             // otherwise, default values hard-coded in the player_activity.xml will be used
-            songObj?.let { nonNullSongObj ->
+            DotifyApp.selectedSong?.let { nonNullSongObj ->
                 albumCoverImage.setImageResource(nonNullSongObj.largeImageID)
                 titleText.text = nonNullSongObj.title
                 artistText.text = nonNullSongObj.artist
@@ -97,9 +91,11 @@ class PlayerActivity : AppCompatActivity() {
         return true // we modified option menu (return false if we need to hide it, for instance, user is not logged in yet)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Get the Dotify Application
+        val DotifyApp = (application as DotifyApplication)
         when(item.itemId) {
             R.id.player_menu_settings -> {
-                songObj?.let { nonNullSongObj ->
+                DotifyApp.selectedSong?.let { nonNullSongObj ->
                     navigateToSettingsActivity(this@PlayerActivity, nonNullSongObj, playCount)
                 }
             }
