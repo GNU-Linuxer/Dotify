@@ -22,57 +22,78 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:contentDescription="Tom Hanks actor in Sully" />
+        android:contentDescription="Tom Hanks actor in Sully"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tom Hanks"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivMoviePic"
+        android:visibility="gone"/>
+
     <TextView
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tom_Hanks_Number_1"
-        android:textSize="25sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivMoviePic"/>
-
-    <TextView
-        android:id="@+id/tvAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Age: 64"
+        android:text="Username: Tom_Hanks_Numner_1"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvUsername"
+        app:layout_constraintTop_toBottomOf="@id/tvPersonName"
         android:paddingTop="50dp"
-        android:paddingBottom="@dimen/text_bottom_padding"/>
+        android:paddingBottom="@dimen/text_bottom_padding"
+        android:visibility="gone"/>
 
     <TextView
-        android:id="@+id/tvEmail"
+        android:id="@+id/tvPlatform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email: tom.hanks@example.com"
+        android:text="Platform: 9.76"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvAge"
-        android:paddingBottom="@dimen/text_bottom_padding"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvUsername"
+        android:paddingBottom="@dimen/text_bottom_padding"
+        android:visibility="gone"/>
 
     <TextView
-        android:id="@+id/tvJoinDate"
+        android:id="@+id/tvHasNose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Joined: 09/06/2016"
+        android:text="Has Nose: False"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail"
-        android:paddingBottom="@dimen/text_bottom_padding"/>
+        app:layout_constraintTop_toBottomOf="@id/tvPlatform"
+        android:paddingBottom="@dimen/text_bottom_padding"
+        android:visibility="gone"/>
 
     <TextView
-        android:id="@+id/tvHeight"
+        android:id="@+id/tvLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Height: 6'0&quot;"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvJoinDate"
-        android:paddingBottom="@dimen/text_bottom_padding"/>
+        android:text="Loading User data..."
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error occured while fetching User data"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
