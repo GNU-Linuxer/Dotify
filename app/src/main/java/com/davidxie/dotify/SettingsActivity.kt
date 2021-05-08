@@ -32,7 +32,7 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySettingsBinding.inflate(layoutInflater).apply { setContentView(root) }
-        with(binding){ // TIP: if I set view binding, I should not use the setContentView(R.layout.activity_settings) (that will create the View twice, which will crash the app)
+        with(binding){
             // Programmatically set the nav graph
             navController.setGraph(R.navigation.nav_graph, intent.extras)
         }

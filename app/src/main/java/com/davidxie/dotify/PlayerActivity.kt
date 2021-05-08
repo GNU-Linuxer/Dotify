@@ -96,6 +96,7 @@ class PlayerActivity : AppCompatActivity() {
         when(item.itemId) {
             R.id.player_menu_settings -> {
                 DotifyApp.selectedSong?.let { nonNullSongObj ->
+                    // Note: pass the nonNullSongObj to the SettingsActivity to simplify the intent that also get relayed to the SettingsFragment
                     navigateToSettingsActivity(this@PlayerActivity, nonNullSongObj, playCount)
                 }
             }
