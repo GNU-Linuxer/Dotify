@@ -1,4 +1,4 @@
-package com.davidxie.dotify
+package com.davidxie.dotify.util
 
 import androidx.recyclerview.widget.DiffUtil
 import com.ericchee.songdataprovider.Song

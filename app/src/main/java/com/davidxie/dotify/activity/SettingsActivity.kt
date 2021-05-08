@@ -1,4 +1,4 @@
-package com.davidxie.dotify
+package com.davidxie.dotify.activity
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.davidxie.dotify.R
 import com.davidxie.dotify.databinding.ActivitySettingsBinding
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider

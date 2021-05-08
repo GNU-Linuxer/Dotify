@@ -1,4 +1,4 @@
-package com.davidxie.dotify
+package com.davidxie.dotify.activity
 
 import android.content.Context
 import android.content.Intent
@@ -8,8 +8,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.davidxie.dotify.DotifyApplication
+import com.davidxie.dotify.R
 import com.davidxie.dotify.databinding.ActivityPlayerBinding
-import com.ericchee.songdataprovider.Song
 import kotlin.random.Random
 
 const val SONG_KEY = "song object"

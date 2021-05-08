@@ -1,13 +1,11 @@
-package com.davidxie.dotify
+package com.davidxie.dotify.util
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.davidxie.dotify.databinding.OneSongLayoutBinding
 import com.ericchee.songdataprovider.Song
-import kotlin.random.Random
 
 class SongListAdapter(private var songList: List<Song>): RecyclerView.Adapter<SongListAdapter.SongListHolder>() {
 

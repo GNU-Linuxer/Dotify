@@ -1,9 +1,10 @@
-package com.davidxie.dotify
+package com.davidxie.dotify.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import com.davidxie.dotify.R
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.davidxie.dotify.databinding.FragmentStatisticsBinding

@@ -1,15 +1,15 @@
-package com.davidxie.dotify
+package com.davidxie.dotify.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.davidxie.dotify.DotifyApplication
+import com.davidxie.dotify.R
 import com.davidxie.dotify.databinding.ActivitySongListBinding
+import com.davidxie.dotify.util.SongListAdapter
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
-
-const val IS_MINI_PLAYER_SHOWN_KEY = "is mini player shown"
-const val SELECTED_SONG_KEY = "selected song in list"
 
 class SongListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySongListBinding
