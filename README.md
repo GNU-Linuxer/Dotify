@@ -10,6 +10,5 @@ none
 
 ## Screenshot
 
-![Dotify Song Player Screenshot](hw3-1.png)
-![Dotify Profile Page](hw3-2.png)
-![Dotify Statistics Page](hw3-3.png)
+![Dotify Loading Screen](hw4-1.png)
+![Dotify Profile Page](hw4-2.png)
