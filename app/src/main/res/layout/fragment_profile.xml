@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ProfileFragment"
-    android:padding="@dimen/mediumPadding">
+    android:padding="@dimen/mediumPadding"
+    tools:context=".fragment.ProfileFragment">
 
 
     <ImageView
@@ -14,16 +13,16 @@
         android:layout_width="200dp"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layout_constraintDimensionRatio="1:1"
+        android:contentDescription="Tom Hanks actor in Sully"
         android:scaleType="centerCrop"
         android:src="@drawable/movie_pic"
+        android:visibility="gone"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:contentDescription="Tom Hanks actor in Sully"
-        android:visibility="gone"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvPersonName"
@@ -31,44 +30,44 @@
         android:layout_height="wrap_content"
         android:text="Tom Hanks"
         android:textSize="25sp"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivMoviePic"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@id/ivMoviePic" />
 
     <TextView
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username: Tom_Hanks_Numner_1"
-        android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPersonName"
         android:paddingTop="50dp"
         android:paddingBottom="@dimen/text_bottom_padding"
-        android:visibility="gone"/>
+        android:text="Username: Tom_Hanks_Numner_1"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPersonName" />
 
     <TextView
         android:id="@+id/tvPlatform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/text_bottom_padding"
         android:text="Platform: 9.76"
         android:textSize="18sp"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvUsername"
-        android:paddingBottom="@dimen/text_bottom_padding"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
 
     <TextView
         android:id="@+id/tvHasNose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/text_bottom_padding"
         android:text="Has Nose: False"
         android:textSize="18sp"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPlatform"
-        android:paddingBottom="@dimen/text_bottom_padding"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@id/tvPlatform" />
 
     <TextView
         android:id="@+id/tvLoading"
@@ -76,11 +75,29 @@
         android:layout_height="wrap_content"
         android:text="Loading User data..."
         android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="visible"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivError"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="Tom Hanks actor in Sully"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_error_icon_foreground"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tvError"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/design_default_color_error" />
 
     <TextView
         android:id="@+id/tvError"
@@ -88,12 +105,12 @@
         android:layout_height="wrap_content"
         android:text="Error occured while fetching User data"
         android:textColor="@color/design_default_color_error"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/ivError"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

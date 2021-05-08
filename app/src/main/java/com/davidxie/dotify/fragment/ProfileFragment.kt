@@ -28,7 +28,9 @@ class ProfileFragment : Fragment() {
                 //Toast.makeText(requireContext(), userInfo.toString(), Toast.LENGTH_SHORT).show()
 
                 // Hide loading text and error text
+                // The tvLoading is set to visible in the layout .xml file
                 binding.tvLoading.visibility = View.GONE
+                binding.ivError.visibility = View.GONE
                 binding.tvError.visibility = View.GONE
 
                 // Populate the data from the github repository
@@ -51,14 +53,15 @@ class ProfileFragment : Fragment() {
                 binding.tvLoading.visibility = View.GONE
 
                 // Show error text
+                binding.ivError.visibility = View.VISIBLE
                 binding.tvError.visibility = View.VISIBLE
 
                 // Hide actual content
-                binding.ivMoviePic.visibility = View.VISIBLE
-                binding.tvPersonName.visibility = View.VISIBLE
-                binding.tvUsername.visibility = View.VISIBLE
-                binding.tvPlatform.visibility = View.VISIBLE
-                binding.tvHasNose.visibility = View.VISIBLE
+                binding.ivMoviePic.visibility = View.GONE
+                binding.tvPersonName.visibility = View.GONE
+                binding.tvUsername.visibility = View.GONE
+                binding.tvPlatform.visibility = View.GONE
+                binding.tvHasNose.visibility = View.GONE
             }
         }
 
