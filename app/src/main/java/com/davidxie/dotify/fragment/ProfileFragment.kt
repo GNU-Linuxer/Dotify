@@ -14,13 +14,24 @@ import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
     private val myApp: DotifyApplication by lazy { requireActivity().application as DotifyApplication }
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentProfileBinding.inflate(inflater)
+        binding = FragmentProfileBinding.inflate(inflater)
+        loadUserData()
+
+        binding.pullDownContainer.setOnRefreshListener {
+            loadUserData()
+        }
+
+        return binding.root
+    }
+
+    private fun loadUserData() {
 
         lifecycleScope.launch{
             kotlin.runCatching {
@@ -63,8 +74,8 @@ class ProfileFragment : Fragment() {
                 binding.tvPlatform.visibility = View.GONE
                 binding.tvHasNose.visibility = View.GONE
             }
+            // Stop pull down to refresh animation
+            binding.pullDownContainer.isRefreshing = false
         }
-
-        return binding.root
     }
 }
