@@ -6,7 +6,7 @@ This app shows a music player interface, with album art, song title, artist, and
 
 ## Attempted extra credit
 
-none
+Add pull down to refresh function to your activity to trigger an HTTP fetch (+.25)
 
 ## Screenshot
 
