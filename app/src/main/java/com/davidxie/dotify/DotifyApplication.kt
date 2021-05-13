@@ -12,6 +12,6 @@ class DotifyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         dataRepository=DataRepository()
-        Log.i("Dotify App", "App has booted")
+        //Log.i("Dotify App", "App has booted")
     }
 }

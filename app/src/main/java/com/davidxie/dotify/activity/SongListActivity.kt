@@ -1,5 +1,6 @@
 package com.davidxie.dotify.activity
 
+import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -15,17 +16,27 @@ import kotlin.reflect.typeOf
 
 class SongListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySongListBinding
+    private lateinit var DotifyApp: DotifyApplication
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Get the Dotify Application
-        val DotifyApp = (application as DotifyApplication)
+        DotifyApp = (application as DotifyApplication)
 
         setContentView(R.layout.activity_song_list)
         binding = ActivitySongListBinding.inflate(layoutInflater).apply { setContentView(root) }
 
         //var songs: List<Song> = listOf(Song("a", "b", "c", 1, "d", "e"));
 
+        loadSong()
+
+        binding.pullDownContainer.setOnRefreshListener {
+
+            loadSong()
+        }
+    }
+
+    private fun loadSong() {
         lifecycleScope.launch {
             kotlin.runCatching {
                 val allSong = DotifyApp.dataRepository.getSongList()
@@ -93,7 +104,8 @@ class SongListActivity : AppCompatActivity() {
                 binding.ivError.visibility = View.VISIBLE
                 binding.tvError.visibility = View.VISIBLE
             }
+            // Stop pull down to refresh animation
+            binding.pullDownContainer.isRefreshing = false
         }
-
     }
 }
