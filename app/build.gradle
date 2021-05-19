@@ -55,4 +55,6 @@ dependencies {
     implementation("io.coil-kt:coil:1.2.1")
     implementation 'com.ericchee:songdataprovider:1.0.5'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    implementation "androidx.work:work-runtime-ktx:2.5.0"
 }
