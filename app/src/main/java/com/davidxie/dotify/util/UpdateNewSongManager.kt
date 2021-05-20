@@ -6,13 +6,13 @@ import java.util.concurrent.TimeUnit
 
 private const val FETCH_SONG_WORK_TAG = "FETCH_SONG_WORK_TAG"
 
-class FetchNewSongManager(context: Context) {
+class UpdateNewSongManager(context: Context) {
 
     private val workManager: WorkManager = WorkManager.getInstance(context)
 
     fun updateNewSong() {
 
-        val request = OneTimeWorkRequestBuilder<FetchNewSongWorker>()
+        val request = OneTimeWorkRequestBuilder<UpdateNewSongWorker>()
             .setInitialDelay(5, TimeUnit.SECONDS)
             .setConstraints(
                 Constraints.Builder()
@@ -32,7 +32,7 @@ class FetchNewSongManager(context: Context) {
             return
         }
 
-        val request = PeriodicWorkRequestBuilder<FetchNewSongWorker>(20, TimeUnit.MINUTES)
+        val request = PeriodicWorkRequestBuilder<UpdateNewSongWorker>(20, TimeUnit.MINUTES)
             .setInitialDelay(5, TimeUnit.SECONDS)
             .setConstraints(
                 Constraints.Builder()
@@ -52,7 +52,7 @@ class FetchNewSongManager(context: Context) {
             return
         }
 
-        val request = PeriodicWorkRequestBuilder<FetchNewSongWorker>(2, TimeUnit.DAYS)
+        val request = PeriodicWorkRequestBuilder<UpdateNewSongWorker>(2, TimeUnit.DAYS)
             .setConstraints(
                 Constraints.Builder()
                     .setRequiredNetworkType(NetworkType.CONNECTED)

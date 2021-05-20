@@ -20,7 +20,7 @@ import kotlin.random.Random
 
 private const val NEW_SONG_CHANNEL_ID = "NEW_SONG_CHANNEL_ID"
 
-class FetchNewSongWorker(
+class UpdateNewSongWorker(
     private val context: Context,
     workerParameters: WorkerParameters
 ): CoroutineWorker(context, workerParameters) {

@@ -13,7 +13,7 @@ import com.davidxie.dotify.DotifyApplication
 import com.davidxie.dotify.NOTIFICATIONS_ENABLED_PREF_KEY
 import com.davidxie.dotify.R
 import com.davidxie.dotify.databinding.FragmentSettingsBinding
-import com.davidxie.dotify.util.FetchNewSongManager
+import com.davidxie.dotify.util.UpdateNewSongManager
 
 
 
@@ -22,7 +22,7 @@ class SettingsFragment : Fragment() {
 
     private val navController by lazy{findNavController()}
     private val dotifyApp by lazy { requireActivity().application as DotifyApplication }
-    private val fetchNewSongManager: FetchNewSongManager by lazy { dotifyApp.fetchNewSongManager }
+    private val updateNewSongManager: UpdateNewSongManager by lazy { dotifyApp.updateNewSongManager }
     private val preferences by lazy { dotifyApp.preferences }
     private val safeArgs: SettingsFragmentArgs by navArgs()
 
@@ -59,10 +59,10 @@ class SettingsFragment : Fragment() {
                 }
                 if (isChecked) {
                     Toast.makeText(requireContext(), "Notifications enabled", Toast.LENGTH_SHORT).show()
-                    fetchNewSongManager.updateNewSong()
+                    updateNewSongManager.updateNewSong()
                 } else {
                     Toast.makeText(requireContext(), "Notifications are turned off", Toast.LENGTH_SHORT).show()
-                    fetchNewSongManager.stopPeriodicallyRefreshing()
+                    updateNewSongManager.stopPeriodicallyRefreshing()
                 }
             }
         }
