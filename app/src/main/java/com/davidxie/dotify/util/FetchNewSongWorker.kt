@@ -27,7 +27,8 @@ class FetchNewSongWorker(
     private val DotifyApp by lazy { context.applicationContext as DotifyApplication }
 
     override suspend fun doWork(): Result {
-
+        // Initialize all channels
+        initNotificationChannels()
         Log.i("FetchNewSongWorker", "updating new songs now")
 
         // Pick a random song from this dataRepository and then send to notification
@@ -42,12 +43,7 @@ class FetchNewSongWorker(
 
     private val notificationManager = NotificationManagerCompat.from(context)
 
-    init {
-        // Initialize all channels
-        initNotificationChannels()
-    }
-
-    fun publishNewSongNotification(selectedSong: Song) {
+    private fun publishNewSongNotification(selectedSong: Song) {
         // Define the intent or action you want when user taps on notification
         val intent = Intent(context, PlayerActivity::class.java).apply { // launch PlayerActivity; note: the selected Song is stored in the DotifyApplication and therefore no need to pass intent
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -73,10 +69,10 @@ class FetchNewSongWorker(
     }
 
     private fun initNotificationChannels() {
-        initNewEmailsChannel()
+        initNewSongChannel()
     }
 
-    private fun initNewEmailsChannel() {
+    private fun initNewSongChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

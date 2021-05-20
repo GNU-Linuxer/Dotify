@@ -26,6 +26,7 @@ class FetchNewSongManager(context: Context) {
     }
 
     fun updateNewSongPeriodic() {
+        // Will not start this periodic worker again if it's already started
         if (isFetchingNewSong()) {
             return
         }
