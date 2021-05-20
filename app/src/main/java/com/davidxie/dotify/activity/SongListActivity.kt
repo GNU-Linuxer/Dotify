@@ -46,6 +46,10 @@ class SongListActivity : AppCompatActivity() {
                 // Hide loading text
                 binding.tvLoading.visibility = View.GONE
 
+                // Hide error text
+                binding.ivError.visibility = View.GONE
+                binding.tvError.visibility = View.GONE
+
                 // Show actual content
                 binding.rvSongList.visibility = View.VISIBLE
 

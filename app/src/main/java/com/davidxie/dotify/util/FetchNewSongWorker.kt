@@ -77,8 +77,8 @@ class FetchNewSongWorker(
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Info about the channel
-            val name = "New Song Notification"
-            val descriptionText = "This Notification will show notification of new songs"
+            val name = "New Uploaded Music"
+            val descriptionText = "This Notification will show notification of new updated music"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
 
             // Create channel object

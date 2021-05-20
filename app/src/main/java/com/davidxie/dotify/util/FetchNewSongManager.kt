@@ -16,6 +16,7 @@ class FetchNewSongManager(context: Context) {
             .setInitialDelay(5, TimeUnit.SECONDS)
             .setConstraints(
                 Constraints.Builder()
+                    .setRequiresBatteryNotLow(true)
                     .setRequiredNetworkType(NetworkType.CONNECTED)
                     .build()
             )
@@ -36,6 +37,27 @@ class FetchNewSongManager(context: Context) {
             .setConstraints(
                 Constraints.Builder()
                     .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .build()
+            )
+            .addTag(FETCH_SONG_WORK_TAG)
+            .build()
+
+        workManager.enqueue(request)
+
+    }
+
+    fun updateNewSongPeriodicLong() {
+        // Will not start this periodic worker again if it's already started
+        if (isFetchingNewSong()) {
+            return
+        }
+
+        val request = PeriodicWorkRequestBuilder<FetchNewSongWorker>(2, TimeUnit.DAYS)
+            .setConstraints(
+                Constraints.Builder()
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
+                    // The battery can't be too low in order for this requirement to run
+                    .setRequiresBatteryNotLow(true)
                     .build()
             )
             .addTag(FETCH_SONG_WORK_TAG)
