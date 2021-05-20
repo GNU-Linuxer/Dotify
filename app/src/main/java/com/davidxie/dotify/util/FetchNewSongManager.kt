@@ -30,10 +30,11 @@ class FetchNewSongManager(context: Context) {
             return
         }
 
-        val request = PeriodicWorkRequestBuilder<FetchNewSongWorker>(15, TimeUnit.MINUTES)
+        val request = PeriodicWorkRequestBuilder<FetchNewSongWorker>(20, TimeUnit.MINUTES)
+            .setInitialDelay(5, TimeUnit.SECONDS)
             .setConstraints(
                 Constraints.Builder()
-                    .setRequiresCharging(true)
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
                     .build()
             )
             .addTag(FETCH_SONG_WORK_TAG)
@@ -56,8 +57,4 @@ class FetchNewSongManager(context: Context) {
             }
         }
     }
-
-
-
-
 }
