@@ -6,9 +6,10 @@ This app shows a music player interface, with album art, song title, artist, and
 
 ## Attempted extra credit
 
-Add pull down to refresh function to your activity to trigger an HTTP fetch (+.25)
+1. FOR DOTIFY project ONLY: In requirement 2.b.v.2, tapping the notification should launch PlayerActivity that passes the song data to the activity to show the song in the player (+1)
+2. In a separate function, create another separate alternative work request that runs every 2 days when the device’s battery is not too low and is connected to a network. For credit, you just need the request code in your WorkManager class, no other code is required. (+.25)
 
 ## Screenshot
 
-![Dotify Loading Screen](hw4-1.png)
-![Dotify Profile Page](hw4-2.png)
+![Dotify Notification](hw5-1.png)
+![Dotify Select Song](hw5-2.png)

@@ -12,6 +12,7 @@ import coil.load
 import com.davidxie.dotify.DotifyApplication
 import com.davidxie.dotify.R
 import com.davidxie.dotify.databinding.ActivityPlayerBinding
+import com.davidxie.dotify.model.Song
 import kotlin.random.Random
 
 const val SONG_KEY = "song object"
@@ -31,6 +32,9 @@ class PlayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Get the Dotify Application
+        val DotifyApp = (application as DotifyApplication)
+
         // Check whether we're recreating a previously destroyed instance
         if (savedInstanceState != null) {
             // we're re-creating this activity
@@ -38,11 +42,14 @@ class PlayerActivity : AppCompatActivity() {
                 // Restore play count number (second parameter is the default value if for some reason the saved value does not pass in)
                 playCount = getInt(PLAY_COUNT_KEY, -1)
             }
+        } else {
+            // If a Song object is passed in while launching player activity, update the DotifyApplication's selected song
+            val songFromIntent: Song? = intent.extras?.getParcelable<Song>(SONG_KEY)
+            if(songFromIntent != null) {
+                Toast.makeText(this, "song is passed in from intent", Toast.LENGTH_SHORT).show()
+                DotifyApp.selectedSong = songFromIntent
+            }
         }
-
-        // Get the Dotify Application
-        val DotifyApp = (application as DotifyApplication)
-
         setContentView(R.layout.activity_player)
         binding = ActivityPlayerBinding.inflate(layoutInflater).apply { setContentView(root) }
 

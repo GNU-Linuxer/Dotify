@@ -14,6 +14,7 @@ import androidx.work.WorkerParameters
 import com.davidxie.dotify.DotifyApplication
 import com.davidxie.dotify.R
 import com.davidxie.dotify.activity.PlayerActivity
+import com.davidxie.dotify.activity.SONG_KEY
 import com.davidxie.dotify.model.Song
 import kotlin.random.Random
 
@@ -47,6 +48,7 @@ class FetchNewSongWorker(
         // Define the intent or action you want when user taps on notification
         val intent = Intent(context, PlayerActivity::class.java).apply { // launch PlayerActivity; note: the selected Song is stored in the DotifyApplication and therefore no need to pass intent
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            putExtra(SONG_KEY, selectedSong)
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT) // dont forget to add PendingIntent.FLAG_UPDATE_CURRENT to send data over
 
