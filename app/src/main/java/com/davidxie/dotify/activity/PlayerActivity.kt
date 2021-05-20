@@ -46,7 +46,7 @@ class PlayerActivity : AppCompatActivity() {
             // If a Song object is passed in while launching player activity, update the DotifyApplication's selected song
             val songFromIntent: Song? = intent.extras?.getParcelable<Song>(SONG_KEY)
             if(songFromIntent != null) {
-                Toast.makeText(this, "song is passed in from intent", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "song is passed in from intent", Toast.LENGTH_SHORT).show()
                 DotifyApp.selectedSong = songFromIntent
             }
         }

@@ -30,7 +30,8 @@ class UpdateNewSongWorker(
     override suspend fun doWork(): Result {
         // Initialize all channels
         initNotificationChannels()
-        Log.i("FetchNewSongWorker", "updating new songs now")
+
+        //Log.i("FetchNewSongWorker", "updating new songs now")
 
         // Pick a random song from this dataRepository and then send to notification
         val allSong = DotifyApp.dataRepository.getSongList()

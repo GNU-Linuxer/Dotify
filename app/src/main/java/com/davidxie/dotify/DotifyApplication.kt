@@ -15,6 +15,7 @@ class DotifyApplication : Application() {
     lateinit var dataRepository: DataRepository
     var selectedSong : Song? = null
     lateinit var preferences: SharedPreferences
+    // this work manager should not be restricted to a single activity, so hold it in the application object
     lateinit var updateNewSongManager: UpdateNewSongManager
 
     override fun onCreate() {
@@ -26,8 +27,12 @@ class DotifyApplication : Application() {
 
         // If the user previously turned on notification, it should automatically fetch song updates
         if(preferences.getBoolean(NOTIFICATIONS_ENABLED_PREF_KEY, false)){
-            Toast.makeText(this, "Notifications enabled", Toast.LENGTH_SHORT).show()
-            updateNewSongManager.updateNewSong()
+            //Toast.makeText(this, "Notifications enabled", Toast.LENGTH_SHORT).show()
+
+            // Publish notification immediately after 5 seconds
+            //updateNewSongManager.updateNewSong()
+            // Publish notification every 20 seconds
+            updateNewSongManager.updateNewSongPeriodic()
         }
 
         //Log.i("Dotify App", "App has booted")

@@ -1,6 +1,8 @@
 package com.davidxie.dotify.util
 
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.work.*
 import java.util.concurrent.TimeUnit
 
@@ -11,7 +13,7 @@ class UpdateNewSongManager(context: Context) {
     private val workManager: WorkManager = WorkManager.getInstance(context)
 
     fun updateNewSong() {
-
+        //Log.i("UpdateNewSongManager", "called one-time refreshing")
         val request = OneTimeWorkRequestBuilder<UpdateNewSongWorker>()
             .setInitialDelay(5, TimeUnit.SECONDS)
             .setConstraints(
@@ -27,11 +29,11 @@ class UpdateNewSongManager(context: Context) {
     }
 
     fun updateNewSongPeriodic() {
+        //Log.i("UpdateNewSongManager", "called periodic refreshing")
         // Will not start this periodic worker again if it's already started
         if (isFetchingNewSong()) {
             return
         }
-
         val request = PeriodicWorkRequestBuilder<UpdateNewSongWorker>(20, TimeUnit.MINUTES)
             .setInitialDelay(5, TimeUnit.SECONDS)
             .setConstraints(

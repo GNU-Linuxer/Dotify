@@ -58,10 +58,14 @@ class SettingsFragment : Fragment() {
                     putBoolean(NOTIFICATIONS_ENABLED_PREF_KEY, isChecked)
                 }
                 if (isChecked) {
-                    Toast.makeText(requireContext(), "Notifications enabled", Toast.LENGTH_SHORT).show()
-                    updateNewSongManager.updateNewSong()
+                    //Toast.makeText(requireContext(), "Notifications enabled", Toast.LENGTH_SHORT).show()
+
+                    // Publish notification immediately after 5 seconds (note that DotifyApplication will also have this code that handles when user has previously turned on notification)
+                    //updateNewSongManager.updateNewSong()
+                    // Publish notification every 20 seconds
+                    updateNewSongManager.updateNewSongPeriodic()
                 } else {
-                    Toast.makeText(requireContext(), "Notifications are turned off", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(requireContext(), "Notifications are turned off", Toast.LENGTH_SHORT).show()
                     updateNewSongManager.stopPeriodicallyRefreshing()
                 }
             }
